@@ -14,14 +14,14 @@
 
   Object.defineProperty(x,'nonEnumerableC', {
     writable : true,
-    inumerable: false,
+    enumerable: false,
     configurable: false,
     value: 3
   });
 
   Object.defineProperty(y, 'nonEnumerableD', {
     writable: true,
-    inumerable: false,
+    enumerable: false,
     configurable: false,
     value : 4
   });

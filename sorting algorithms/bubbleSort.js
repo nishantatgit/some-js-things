@@ -1,20 +1,20 @@
 function bubbleSort(array, sortFunction){
-  if(Object.prototype.toString.call(array) !== "[object Array]"){
-    throw new TypeError(array + ' is of invalid type');
-  }
-
   function defaultSortFunction(a,b){
     return a-b;
   }
-
-  var len = array.length; 
+  
+  if(Object.prototype.toString.call(array) !== "[object Array]"){
+    throw new TypeError(array + ' is of invalid type');
+  }
 
   if(!array){
     throw new TypeError( array + ' is of invalid type');
   }
 
-  if(len === 0) {
-    throw new TypeError(array + 'is empty');
+  var len = array.length;
+
+  if(len === 0 || len === 1) {
+    return array;
   }
 
   sortFunction = sortFunction || defaultSortFunction;

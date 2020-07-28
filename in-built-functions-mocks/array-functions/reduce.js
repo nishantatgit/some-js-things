@@ -31,4 +31,6 @@
 
   testMyReducer();
 
+  delete Array.prototype.myReduce;
+
 })();

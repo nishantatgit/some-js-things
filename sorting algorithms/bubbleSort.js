@@ -7,10 +7,6 @@ function bubbleSort(array, sortFunction){
     throw new TypeError(array + ' is of invalid type');
   }
 
-  if(!array){
-    throw new TypeError( array + ' is of invalid type');
-  }
-
   var len = array.length;
 
   if(len === 0 || len === 1) {

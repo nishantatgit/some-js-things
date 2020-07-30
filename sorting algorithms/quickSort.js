@@ -16,7 +16,6 @@ function quickSort(array, sortFunction){
   sortFunction = sortFunction || defaultSortFunction;
 
   function sort(start,end){
-    console.log(start,end);
     if(start >= end) return;
     var i = start;
     var j = start - 1;
@@ -32,17 +31,16 @@ function quickSort(array, sortFunction){
       }
       i++;
     }
-    
-    tmp = array[j+1];
-    array[j+1] = array[end];
-    array[end] = tmp;
+
+    array[end] = array[j+1];
+    array[j+1] = pivot;
 
     sort(start,j);
     sort(j+2,end);
   }
   
   sort(0,len-1);
-  
+
   return array;
 }
 

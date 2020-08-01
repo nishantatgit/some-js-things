@@ -15,8 +15,6 @@ function mergeSort(array, sortFunction){
 
   sortFunction = sortFunction || defaultSortFunction;
 
-  var sortedCopy = [];
-
   function merge(start,middle,end){
     const leftArray = [];
     const rightArray = [];
@@ -40,7 +38,6 @@ function mergeSort(array, sortFunction){
     }
 
     while(j <= end){
-      console.log('j ',j);
       array[k++] = rightArray[j++];
     }
   }

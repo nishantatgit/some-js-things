@@ -5,7 +5,7 @@ function rodCutting(priceArray,size){
   }
 
   var totalAmountArray = [];
-  
+
   if(size === 0){
     return 0;
   }
@@ -13,9 +13,14 @@ function rodCutting(priceArray,size){
     return array[0];
   }
 
+  var maxValue = -1;
+
   for(var i = size ; i > 0; i--){
-    totalAmountArray.push(array[i-1] + rodCutting(array,size - i));
+     var currentValue = array[i-1] + rodCutting(array,size - i);
+     if(maxValue < currentValue){
+       maxValue = currentValue;
+     } 
   }
 
-  return Math.max.apply(null,totalAmountArray);
+  return maxValue;
 }

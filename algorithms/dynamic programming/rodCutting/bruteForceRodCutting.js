@@ -1,6 +1,6 @@
 function rodCutting(priceArray,size){
 
-  if(Object.prototype.toString.call(array) !== "[object Array]"){
+  if(Object.prototype.toString.call(priceArray) !== "[object Array]"){
     throw new TypeError(array + ' is of invalid type, number array expected');
   }
 
@@ -10,13 +10,13 @@ function rodCutting(priceArray,size){
     return 0;
   }
   if(size === 1){
-    return array[0];
+    return priceArray[0];
   }
 
   var maxValue = -1;
 
   for(var i = size ; i > 0; i--){
-     var currentValue = array[i-1] + rodCutting(array,size - i);
+     var currentValue = priceArray[i-1] + rodCutting(priceArray,size - i);
      if(maxValue < currentValue){
        maxValue = currentValue;
      } 

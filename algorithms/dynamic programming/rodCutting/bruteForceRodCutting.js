@@ -13,7 +13,7 @@ function rodCutting(priceArray,size){
     return priceArray[0];
   }
 
-  var maxValue = -1;
+  var maxValue = -Infinity;
 
   for(var i = size ; i > 0; i--){
      var currentValue = priceArray[i-1] + rodCutting(priceArray,size - i);

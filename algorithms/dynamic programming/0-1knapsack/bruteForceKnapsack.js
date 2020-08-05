@@ -1,8 +1,4 @@
 function bruteForceKnapSack(val,weight,capacity,bag={}){
-  if( capacity <= 0){
-    return 0;
-  }
-
   var len = val.length;
   var maxTotal = -Infinity;
 
@@ -19,6 +15,5 @@ function bruteForceKnapSack(val,weight,capacity,bag={}){
       delete bag[i];
     }
   }
-
   return maxTotal;
 }

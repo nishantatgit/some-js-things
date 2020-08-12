@@ -18,11 +18,11 @@
     return filteredArray;
   };
 
-  function testMyMap(){
-    console.log([1,2,3,-1,0,-2].filter(v => v > 0)); // [1,2,3];
+  function testMyFilter(){
+    console.log([1,2,3,-1,0,-2].myFilter(v => v > 0)); // [1,2,3];
   }
 
-  testMyMap();
+  testMyFilter();
 
   delete Array.prototype.myFilter; 
 })()

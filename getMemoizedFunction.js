@@ -1,6 +1,6 @@
 function getMemoizedFunction(fn){
   
-  if(typeof fn !== 'Function'){
+  if(typeof fn !== 'function'){
     throw new TypeError('Not a valid function');
   }
 
@@ -14,5 +14,5 @@ function getMemoizedFunction(fn){
     }
     return results[argsKey]; 
   }
-  
+
 }

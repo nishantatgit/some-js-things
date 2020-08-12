@@ -1,10 +1,10 @@
 (function (){
   Array.prototype.myReduce = function (fn,initialValue){
     
-    if(typeof fn !== 'Function'){
+    if(typeof fn !== 'function'){
       throw new TypeError('Not a valid function');
     }
-    
+
     var len = this.length;
     var acc;
     var startIndex = 0;

@@ -1,7 +1,7 @@
 (function(){
   Array.prototype.myMap = function(fn){
     
-    if(typeof fn !== 'Function'){
+    if(typeof fn !== 'function'){
       throw new TypeError('Not a valid function');
     }
 

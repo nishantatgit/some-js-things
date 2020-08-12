@@ -1,7 +1,7 @@
 (function(){
   Array.prototype.myFilter = function(fn, thisArg){
     
-    if(typeof fn !== 'Function'){
+    if(typeof fn !== 'function'){
       throw new TypeError('Not a valid function');
     }
 

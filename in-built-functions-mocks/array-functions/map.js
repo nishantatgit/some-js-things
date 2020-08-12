@@ -1,5 +1,10 @@
 (function(){
   Array.prototype.myMap = function(fn){
+    
+    if(typeof fn !== 'Function'){
+      throw new TypeError('Not a valid function');
+    }
+    
     var len = this.length;
     var mappedArray = [];
     for(var i = 0 ; i < len; i ++){

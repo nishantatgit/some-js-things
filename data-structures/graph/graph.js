@@ -9,6 +9,7 @@ function createGraph(v, e){
 
   var vertices = v;
   var edges = e;
+  var vIndex = 0;
 
   function adjacent(){
 
@@ -18,27 +19,56 @@ function createGraph(v, e){
 
   }
 
-  function _addVertex(){
+  function _addVertex(identifier,value){
+    
+    if(vertices[identifier]){
+      throw new Error('duplicate vertex. vertex ' + identifier + ' already exists');
+    }
 
+    var vertex = {
+      identifier : identifier,
+      value: value,
+    };
+    
+    vertices[identifier] = vertex;
   }
-
-  function addVertex(vertex){
+  
+  function addVertex(name,value){
     if(!vertices){
       vertices = {};
-      vertices[vertex.id] = vertex;
+      _addVertex(name,value);
     }
   }
 
-  function removeVertex(){
-
+  function removeVertex(identifier){
+    delete vertices[identifier];
   }
 
-  function addEdge(){
+  function addEdge(edge){
+    if(!edge.startVertex){
+      throw new Error('Edge must have start vertex');
+    }
+    if(!edge.endVertex){
+      throw new Error('Edge must have end vertex');
+    }
 
+    if(!vertices[edge.startVertex.identifier]){
+      addVertex(edge.startVertex);
+    }
+
+    if(!vertices[edge.endVertex.identifier]){
+      addVertex(edge.endVertex);
+    }
+
+    if(!edges){
+      edges = {};
+    }
+
+    edges[edge.identifier] = edge;
   }
 
-  function removeEdge(){
-
+  function removeEdge(identifier){
+    delete edges[identifier];
   }
 
   function getVertexValue(){

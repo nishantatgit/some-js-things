@@ -5,6 +5,7 @@ function createGraph(v, e){
   var vIndex = 0;
   var adjacencyList;
   var adjacencyMatrix;
+  var matrixToVerticesMap;
 
   function _addVertex(identifier,value){
     if(vertices[identifier]){
@@ -49,8 +50,40 @@ function createGraph(v, e){
   }
 
   function _prepareAdjacencyMatrix(){
+    if(!vertices){
+      throw new Error('cannot create adjacency matrix with empty vertices');
+    }
+
+    if(!edges){
+      throw new Error('cannot create adjacency matrix with empty edges');
+    }
+
+    if(adjacencyList){
+      throw new Error('adjacencyMatrix already exists');
+    }
+
     adjacencyMatrix = [];
-    var dim = vertices.length;
+    matrixToVerticesMap = {};
+    var verticesKeys = Object.keys(vertices);
+    var dim = verticesKeys.length;
+
+    for(var i =0; i < dim; i++){
+      var vID = verticesKeys[i];
+      matrixToVerticesMap[vID] = i;
+      adjacencyMatrix[i] = [];
+      for(var j =0; j < dim ; j++){
+        adjacencyMatrix[i][j] = 0;
+      }
+    }
+
+    var edgesKeys = Object.keys(edges);
+
+    for(var i = 0; i < edgesKeys.length; i++){
+      var eID = edgesKeys[i];
+      var startVertex = edges[eID].startVertex;
+      var endVertex = edges[eID].endVertex;
+      adjacencyMatrix[matrixToVerticesMap[startVertex]][matrixToVerticesMap[endVertex]] = edges[eID].value;
+    }
   }
 
   function adjacent(){

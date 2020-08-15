@@ -187,3 +187,5 @@ function createGraph(v, e){
     getAdjacencyMatrix: getAdjacencyMatrix
   }
 }
+
+export { createGraph as graph };

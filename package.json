@@ -1,0 +1,29 @@
+{
+  "name": "some-js-things",
+  "version": "0.0.1",
+  "description": "'javascript data structure and algorithms'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishantatgit/some-js-things.git"
+  },
+  "keywords": [
+    "javascript",
+    "algorithms",
+    "data-structure"
+  ],
+  "author": "Nishant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nishantatgit/some-js-things/issues"
+  },
+  "homepage": "https://github.com/nishantatgit/some-js-things#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}

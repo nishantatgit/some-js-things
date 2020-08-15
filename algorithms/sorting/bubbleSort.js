@@ -33,3 +33,5 @@ function bubbleSort(array, sortFunction){
 
   return array;
 }
+
+export { bubbleSort };

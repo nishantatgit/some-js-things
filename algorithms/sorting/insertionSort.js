@@ -29,3 +29,5 @@ function insertionSort(array, sortFunction){
 
   return array;
 }
+
+module.exports = insertionSort;

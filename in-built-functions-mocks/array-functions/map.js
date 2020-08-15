@@ -2,7 +2,7 @@
   Array.prototype.myMap = function(fn){
     
     if(typeof fn !== 'function'){
-      throw new TypeError('Not a valid function');
+      throw new TypeError(fn + ' is not a valid function');
     }
 
     var len = this.length;

@@ -1,26 +1,12 @@
 function createGraph(v, e){
-  if(Object.prototype.toString.call(v) !== '[object Object]'){
-    throw new TypeError(vertices + 'is of invalid type ');
-  }
-
-  if(Object.prototype.toString.call(e) !== '[object Object]'){
-    throw new TypeError(edges + 'is of invalid type');
-  }
-
-  var vertices = v;
-  var edges = e;
+  
+  var vertices = v || {};
+  var edges = e || {};
   var vIndex = 0;
-
-  function adjacent(){
-
-  }
-
-  function neighbors(){
-
-  }
+  var adjacencyList;
+  var adjacencyMatrix;
 
   function _addVertex(identifier,value){
-    
     if(vertices[identifier]){
       throw new Error('duplicate vertex. vertex ' + identifier + ' already exists');
     }
@@ -29,21 +15,60 @@ function createGraph(v, e){
       identifier : identifier,
       value: value,
     };
-    
     vertices[identifier] = vertex;
+  }
+
+  function _prepareAdjacencyList(){ 
+    if(!vertices){
+      throw new Error('cannot create adjacency list with empty vertices');
+    }
+
+    if(!edges){
+      throw new Error('cannot create adjacency list with empty edges');
+    }
+
+    if(adjacencyList){
+      throw new Error('adjacencyList already exists');
+    }
+    
+    adjacencyList = {};
+    var verticesKeys = Object.keys(vertices);
+    var edgesKeys = Object.keys(edges);
+
+    for(var i = 0; i < verticesKeys.length; i++){
+      vID = verticesKeys[i];
+      adjacencyList[vID] = [];
+
+      for(var j = 0; j < edgesKeys.length; j++){
+        eID = edgesKeys[j];
+        if(edges[eID].startVertex === vertices[vID].identifier){
+          adjacencyList[vID].push(edges[eID].endVertex);
+        }
+      }
+    }
+  }
+
+  function _prepareAdjacencyMatrix(){
+    adjacencyMatrix = [];
+    var dim = vertices.length;
+  }
+
+  function adjacent(){
+
+  }
+
+  function neighbors(){
+
   }
   
   function addVertex(name,value){
-    if(!vertices){
-      vertices = {};
-      _addVertex(name,value);
-    }
+    _addVertex(name,value);
   }
 
   function removeVertex(identifier){
     delete vertices[identifier];
   }
-
+  
   function addEdge(edge){
     if(!edge.startVertex){
       throw new Error('Edge must have start vertex');
@@ -52,16 +77,12 @@ function createGraph(v, e){
       throw new Error('Edge must have end vertex');
     }
 
-    if(!vertices[edge.startVertex.identifier]){
+    if(!vertices[edge.startVertex]){
       addVertex(edge.startVertex);
     }
 
-    if(!vertices[edge.endVertex.identifier]){
+    if(!vertices[edge.endVertex]){
       addVertex(edge.endVertex);
-    }
-
-    if(!edges){
-      edges = {};
     }
 
     edges[edge.identifier] = edge;
@@ -71,28 +92,34 @@ function createGraph(v, e){
     delete edges[identifier];
   }
 
-  function getVertexValue(){
-
+  function getVertexValue(identifier){
+    return vertices[identifier].value
   }
 
-  function setVertexValue(){
-
+  function setVertexValue(value){
+    return vertices[identifier].value = value;
   }
 
   function getEdgeValue(){
-
+    return edges[identifier].value
   }
 
   function setEdgeValue(){
-
+    return edges[identifier].value = value;
   }
 
   function getAdjacencyList(){
-
+    if(!adjacencyList){
+      _prepareAdjacencyList();
+    }
+    return adjacencyList;
   }
 
   function getAdjacencyMatrix(){
-
+    if(!adjacencyMatrix){
+      _prepareAdjacencyMatrix();
+    }
+    return adjacencyMatrix;
   }
 
   return {

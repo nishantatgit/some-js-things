@@ -22,7 +22,7 @@
   function testMyEvery(){
     var arr = [-1,2,3,4];
     console.log(arr.myEvery(v => v < 0)); // false
-    console.log(arr.mySome(v => v >= -1)); // true
+    console.log(arr.myEvery(v => v >= -1)); // true
   }
 
   testMyEvery();

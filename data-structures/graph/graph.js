@@ -96,14 +96,19 @@ function createGraph(v, e){
       for(var i = 0; i < adjacentVertices.length; i++){
         if(adjacentVertices[i] === vertexYID){
           isAdjacent =  true;
+          break;
         }
       }
     }
     return isAdjacent;
   }
 
-  function neighbors(){
+  function neighbors(vertex){
+    var vID =  vertex.identifier;
+    if(!vertices[vID]) return;
 
+    var adjacencyList = getAdjacencyList();
+    return adjacencyList[vID]; 
   }
   
   function addVertex(name,value){

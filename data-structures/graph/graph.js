@@ -86,8 +86,20 @@ function createGraph(v, e){
     }
   }
 
-  function adjacent(){
-
+  function adjacent(vertexX, vertexY){
+    var isAdjacent = false;
+    var vextexXID = vertexX.identifier;
+    var vertexYID = vertexY.identifier;
+    if(vertices[vextexXID] && vertices[vertexYID]){
+      var adjacencyList = getAdjacencyList();
+      var adjacentVertices = adjacencyList[vextexXID]
+      for(var i = 0; i < adjacentVertices.length; i++){
+        if(adjacentVertices[i] === vertexYID){
+          isAdjacent =  true;
+        }
+      }
+    }
+    return isAdjacent;
   }
 
   function neighbors(){

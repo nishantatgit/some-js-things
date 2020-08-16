@@ -19,8 +19,8 @@ function insertionSort(array, sortFunction){
     for(var j = 0; j < i; j++){
       if(sortFunction(array[j],array[i]) > 0){
         var tmp = array[i];
-        for(k=i; k>=j; k--){
-          array[k] = arr[k-1];
+        for(var k = i; k >= j; k--){
+          array[k] = array[k-1];
         }
         array[j] = tmp;
       }
@@ -30,4 +30,4 @@ function insertionSort(array, sortFunction){
   return array;
 }
 
-module.exports = insertionSort;
+export { insertionSort }

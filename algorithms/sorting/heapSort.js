@@ -51,4 +51,4 @@ function heapSort(array, sortFunction){
   return array;
 }
 
-module.exports = heapSort;
+export { heapSort };

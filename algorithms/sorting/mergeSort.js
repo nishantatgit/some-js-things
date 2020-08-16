@@ -54,3 +54,5 @@ function mergeSort(array, sortFunction){
 
   return array;
 }
+
+export { mergeSort }

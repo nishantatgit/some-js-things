@@ -4,8 +4,8 @@
   "description": "'javascript data structure and algorithms'",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js --mode development"
+    "build": "webpack --config webpack.config.js --mode development",
+    "test": "jest --config=jest.config.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,17 @@
   },
   "homepage": "https://github.com/nishantatgit/some-js-things#readme",
   "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "babel-jest": "^26.3.0",
+    "babel-loader": "^8.1.0",
+    "jest": "^26.4.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    }
   }
 }

@@ -44,3 +44,4 @@ function quickSort(array, sortFunction){
   return array;
 }
 
+export { quickSort };

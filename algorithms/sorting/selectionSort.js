@@ -27,3 +27,5 @@ function selectionSort(array, sortFunction){
 
   return array;
 }
+
+export { selectionSort };

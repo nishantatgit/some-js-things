@@ -2,7 +2,6 @@ function createGraph(v, e){
   
   var vertices = v || {};
   var edges = e || {};
-  var vIndex = 0;
   var adjacencyList;
   var adjacencyMatrix;
   var matrixToVerticesMap;

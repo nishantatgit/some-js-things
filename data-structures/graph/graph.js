@@ -153,7 +153,7 @@ function createGraph(v, e){
     return vertices[identifier].value = value;
   }
 
-  function getEdgeValue(){
+  function getEdgeValue(identifier){
     return edges[identifier].value
   }
 

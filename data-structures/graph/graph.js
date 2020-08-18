@@ -37,11 +37,11 @@ function createGraph(v, e){
     var edgesKeys = Object.keys(edges);
 
     for(var i = 0; i < verticesKeys.length; i++){
-      vID = verticesKeys[i];
+      var vID = verticesKeys[i];
       adjacencyList[vID] = [];
 
       for(var j = 0; j < edgesKeys.length; j++){
-        eID = edgesKeys[j];
+        var eID = edgesKeys[j];
         if(edges[eID].startVertex === vertices[vID].identifier){
           adjacencyList[vID].push(edges[eID].endVertex);
         }
@@ -88,13 +88,11 @@ function createGraph(v, e){
 
   function adjacent(vertexX, vertexY){
     var isAdjacent = false;
-    var vextexXID = vertexX.identifier;
-    var vertexYID = vertexY.identifier;
-    if(vertices[vextexXID] && vertices[vertexYID]){
+    if(vertices[vertexX] && vertices[vertexY]){
       var adjacencyList = getAdjacencyList();
-      var adjacentVertices = adjacencyList[vextexXID]
+      var adjacentVertices = adjacencyList[vertexX]
       for(var i = 0; i < adjacentVertices.length; i++){
-        if(adjacentVertices[i] === vertexYID){
+        if(adjacentVertices[i] === vertexY){
           isAdjacent =  true;
           break;
         }
@@ -104,11 +102,9 @@ function createGraph(v, e){
   }
 
   function neighbors(vertex){
-    var vID =  vertex.identifier;
-    if(!vertices[vID]) return;
-
+    if(!vertices[vertex]) return;
     var adjacencyList = getAdjacencyList();
-    return adjacencyList[vID]; 
+    return adjacencyList[vertex]; 
   }
   
   function addVertex(name,value){

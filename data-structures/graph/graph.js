@@ -57,7 +57,7 @@ function createGraph(v, e){
       throw new Error('cannot create adjacency matrix with empty edges');
     }
 
-    if(adjacencyList){
+    if(adjacencyMatrix){
       throw new Error('adjacencyMatrix already exists');
     }
 

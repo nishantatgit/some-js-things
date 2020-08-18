@@ -17,7 +17,13 @@ var arraysToTest = {
         ], // reverse sorted number array
   '4' : [-1],
   '5' : [2,1],
-  '6' : [1,-2,3]
+  '6' : [1,-2,3],
+  'tshirt-array' : [ 
+                      {size:'L', color:'black'}, {size:'S', color:'black' }, {size: 'S', color: 'yellow'},
+                      {size:'XS', color:'black' },{size: 'S', color:'purple' },{size: 'XL', color: 'green'},
+                      {size:'S', color:'green' },{size: 'L', color:'green' },{size: 'XL', color: 'purple'},
+                      {size:'XXL', color:'black' },{size: 'XS', color:'yellow' },{size: 'XXL', color: 'green' }
+                    ]
 }
 
 export { arraysToTest as testData };

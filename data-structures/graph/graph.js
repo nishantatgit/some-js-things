@@ -112,6 +112,9 @@ function createGraph(v, e){
   }
   
   function addVertex(name,value){
+    if(!name){
+      throw new Error('vertex name cannot be undefined');
+    }
     _addVertex(name,value);
   }
 

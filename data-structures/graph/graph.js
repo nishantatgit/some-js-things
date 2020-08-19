@@ -170,6 +170,10 @@ function createGraph(v, e){
     return adjacencyMatrix;
   }
 
+  function hasVertex(vertex){
+    return vertex in vertices;
+  }
+
   return {
     adjacent: adjacent,
     neighbors: neighbors,
@@ -179,6 +183,7 @@ function createGraph(v, e){
     removeEdge: removeEdge,
     getVertexValue: getVertexValue,
     setVertexValue: setVertexValue,
+    hasVertex: hasVertex,
     getEdgeValue: getEdgeValue,
     setEdgeValue: setEdgeValue,
     getAdjacencyList: getAdjacencyList,

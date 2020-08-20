@@ -1,8 +1,8 @@
 # Todo List
 ## Algorithms
 ### Graphs
-  - ~~DFS
-  - ~~BFS
+  - ~~DFS~~
+  - ~~BFS~~
   - Minimum Spanning Tree (Prim's algorithm)
   - Minimum Spaning Tree (Kruskals algorithm)
   - Detecting Cycle in graph

@@ -1,5 +1,5 @@
 import { graph } from '../../../data-structures/graph/graph';
-import { dfs } from '../dfs';
+import { bfs } from '../bfs';
 
 describe('depth first search ', function(){
   var grph;
@@ -8,7 +8,7 @@ describe('depth first search ', function(){
   });
 
   /* graph1 */
-  it(' should return path based on depth first search ', function(){
+  it(' should return path based on breadth first search ', function(){
     grph.addVertex('a');
     grph.addVertex('b');
     grph.addVertex('c');
@@ -29,8 +29,8 @@ describe('depth first search ', function(){
       identifier: 'b_c'
     });
 
-    expect(dfs(grph, 'a')).toEqual(['a','b','c']);
-    expect(dfs(grph, 'b')).toEqual(['b','c', 'a']);
+    expect(bfs(grph, 'a')).toEqual(['a','b','c']);
+    expect(bfs(grph, 'b')).toEqual(['b','c', 'a']);
   });
 
   /* graph2 */
@@ -71,10 +71,10 @@ describe('depth first search ', function(){
       identifier: 'd_b'
     });
 
-    expect(dfs(grph, 'a')).toEqual(['a','b','c','d']);
-    expect(dfs(grph, 'b')).toEqual(['b','c','d','a']);
-    expect(dfs(grph, 'c')).toEqual(['c','a','b', 'd']);
-    expect(dfs(grph, 'd')).toEqual(['d','a','b', 'c']);
+    expect(bfs(grph, 'a')).toEqual(['a','b','c','d']);
+    expect(bfs(grph, 'b')).toEqual(['b','c','d','a']);
+    expect(bfs(grph, 'c')).toEqual(['c','a','b', 'd']);
+    expect(bfs(grph, 'd')).toEqual(['d','a','b', 'c']);
   });
 
   /* graph3 */
@@ -127,10 +127,10 @@ describe('depth first search ', function(){
       identifier: 'e_c'
     });
 
-    expect(dfs(grph, 'a')).toEqual(['a','b','d','e','c']);
-    expect(dfs(grph, 'b')).toEqual(['b','a','d','e','c']);
-    expect(dfs(grph, 'c')).toEqual(['c','b','a','d','e']);
-    expect(dfs(grph, 'd')).toEqual(['d','e','b','a','c']);
-    expect(dfs(grph, 'e')).toEqual(['e','b','a','d','c']);
+    expect(bfs(grph, 'a')).toEqual(['a','b','d','e','c']);
+    expect(bfs(grph, 'b')).toEqual(['b','a','d','e','c']);
+    expect(bfs(grph, 'c')).toEqual(['c','b','d','a','e']);
+    expect(bfs(grph, 'd')).toEqual(['d','e','b','c','a']);
+    expect(bfs(grph, 'e')).toEqual(['e','b','c','a','d']);
   });
 })

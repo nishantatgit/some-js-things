@@ -1,17 +1,27 @@
-/* depth first search algorithm */
-function dfs(graph, startVertex){
+/* breadth first search algorithm */
+function bfs(graph, startVertex){
+  function doBFS(startVertex){
+    var queue = [startVertex];
 
-  function doDFS(startVertex){
-    viewed[startVertex] = true;
-    path.push(startVertex);
-    var neighbors = adjacencyList[startVertex];
-    for(var i = 0; i < neighbors.length; i++){
-      if(!viewed[neighbors[i]]){
-        doDFS(neighbors[i])
+    while(queue.length > 0){
+      var currentVertex = queue.shift();
+      
+      if(!viewed[currentVertex]){
+        viewed[currentVertex] = true;
+        path.push(currentVertex);
+        var neighbours = adjacencyList[currentVertex];
+        for(var i = 0; i < neighbours.length; i++){
+          queue.push(neighbours[i]);
+        }
       }
     }
-  }
 
+    var neighbours = adjacencyList[startVertex];
+
+    for(var i = 0; i < neighbours.length; i++){
+      queue.push(neighbours[i]);
+    }
+  }
   if(!startVertex){
     throw new Error('start vertex cannot be empty ');
   }
@@ -37,20 +47,20 @@ function dfs(graph, startVertex){
   if(!adjacencyList){
     throw new Error('adjacencyList not found');
   }
-  
-  var keys = Object.keys(adjacencyList);
+
   var viewed = {};
   var path = [];
-  
-  doDFS(startVertex);
+  var keys = Object.keys(adjacencyList);
+
+  doBFS(startVertex);
   for(var i = 0; i < keys.length; i++){
     var vertex = keys[i];
     if(!viewed[vertex]){
-      doDFS(vertex);
+      doBFS(vertex);
     }
   }
-
+  
   return path;
 }
 
-export { dfs };
+export { bfs }

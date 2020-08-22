@@ -1,19 +1,31 @@
 function disjointSet(list,rank,key){
-  
+  function isValidArray(array){
+    return !!(Object.prototype.toString.call(array) === '[object Array]' && array && array.length);
+  }
 
   var disjointSets = {};
-  var isObjectList = typeof list === 'object';
+  var isValidList = isValidArray(list);
+  var isValidRank = isValidArray(rank);
+  var isObjectList = isValidList && typeof list[0] === 'object';
   
-  if(!list){
-    throw new Error('list cannot be empty');
+  if(isValidList && !isValidRank){
+    throw new Error('list cannot be ' + list);
   }
 
-  if(!rank){
-    throw new Error('rank cannot be empty');
+  if(isValidList && !isValidRank){
+    throw new Error('rank cannot be ' + rank);
   }
 
-  if(isObjectList && !key){
-    throw new Error('key is required for list of objects as a second parameter to function');
+  if(rank.length < list.length){
+    throw new Error('Length of rank is less than that of list');
+  }
+
+  if(key && !isValidRank){
+    throw new Error('rank cannot be ' + rank);
+  }
+
+  if(list && rank){
+    makeSet();
   }
 
   function _makeSet(){
@@ -29,18 +41,29 @@ function disjointSet(list,rank,key){
   }
 
   function find(element){
-    while(disjointSets[element] !== element){
+    if(!element){
+      throw new Error('element can not be ' + element);
+    }
+
+    while(element !== disjointSets[element]) {
       element = disjointSets[element]
     }
+    return element;
   }
 
   function union(elementA, elementB){
+    if(!elementA || !elementB){
+      throw new Error('invalid input');
+    }
+
     var rootA = find(elementA);
     var rootB = find(elementB);
 
     if(rootA !== rootB){
       if(rank[rootA] > rank[rootB]){
         disjointSets[rootA] = rootB;
+      } else {
+        disjointSets[rootB] = rootA;
       }
     }
   }

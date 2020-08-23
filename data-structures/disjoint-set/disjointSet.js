@@ -9,22 +9,20 @@ function disjointSet(list,rank,key){
   var isObjectList = isValidList && typeof list[0] === 'object';
   
   if(isValidList && !isValidRank){
-    throw new Error('list cannot be ' + list);
-  }
-
-  if(isValidList && !isValidRank){
     throw new Error('rank cannot be ' + rank);
   }
 
-  if(rank.length < list.length){
-    throw new Error('Length of rank is less than that of list');
+  if(isValidRank && !isValidList){
+    throw new Error('list of sets cannot be ' + list);
   }
 
-  if(key && !isValidRank){
-    throw new Error('rank cannot be ' + rank);
-  }
-
-  if(list && rank){
+  if(isValidList && isValidRank){
+    if(rank.length < list.length){
+      throw new Error('length of rank is less than that of list of sets');
+    }
+    if(isObjectList && !key){
+      throw new Error('key cannot be ' + key + ' for sets of objects');
+    }
     makeSet();
   }
 

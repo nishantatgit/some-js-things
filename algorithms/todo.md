@@ -7,7 +7,7 @@
   - Minimum Spaning Tree (Kruskals algorithm)
   - ~~Detecting Cycle in graph~~
   - Kosaraju algo for strongly connected component
-  - Topological Sort
+  - ~~Topological Sort~~
   - Dijkstra's algorithm for shortest path
   - Bellman Ford algorithm
   - Floyd Warshall algorithm

@@ -1,6 +1,6 @@
 function disjointSet(list,rank,key){
   function isValidArray(array){
-    return !!(Object.prototype.toString.call(array) === '[object Array]' && array && array.length);
+    return !!(Object.prototype.toString.call(array) === '[object Array]' && array.length);
   }
 
   var disjointSets = {};

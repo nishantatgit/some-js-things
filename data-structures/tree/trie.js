@@ -1,36 +1,29 @@
 function trie(list){
-  if(list && Object.prototype.toString.call(list) !== '[object Array]'){
-    throw new TypeError('list must be an array');
-  }
-
-  if(list && list.length <= 0){
-    throw new Error('list cannot be empty');
-  }
-
-  var root = {};
-
-  function check(){
-
+  if(list && Object.prototype.toString.call(list) !== '[object Object]'){
+    throw new TypeError('input param must be an object');
   }
 
   function createNode(value){
     return {
       value : value,
-      next : {}
+      next : {},
+      subtreeCount : 0
     }
   }
 
-  function insert(str){
+  function insert(str,value){
     var strArray = str.split('');
     var currentNode = root;
-    for(var i = 0; i < length; i++){
+    for(var i = 0; i < strArray.length; i++){
       var char = strArray[i];
       if(currentNode.next[char]){
-        currentNode =  currentNode.next;
+        currentNode.subtreeCount = currentNode.subtreeCount + 1;
       } else {
         currentNode.next[char] = createNode();
       }
+      currentNode =  currentNode.next[char];
     }
+    currentNode.value = value;
   }
 
   function check(str){
@@ -40,8 +33,9 @@ function trie(list){
     for(var i = 0; i < strArray.length && currentNode !== undefined; i++){
       var char = strArray[i];
       if(!currentNode.next[char]){
-        break
+        break;
       }
+      currentNode = currentNode.next[char];
     }
     if(i < strArray.length){
       hasString = false;
@@ -49,9 +43,14 @@ function trie(list){
     return hasString;
   }
 
-  if(list && list.length > 0){
-    for(var i = 0; i < list.length; i++){
-      insert(list[i]);
+  var root = { next : {}, subtreeCount: 0 };
+
+  var strings = Object.keys(list);
+
+  if(strings && strings.length > 0){
+    for(var i = 0; i < strings.length; i++){
+      var currentString = strings[i];
+      insert(currentString,list[currentString]);
     }
   }
 

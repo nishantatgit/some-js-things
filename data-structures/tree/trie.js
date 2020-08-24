@@ -1,6 +1,6 @@
 function trie(list){
   if(list && Object.prototype.toString.call(list) !== '[object Object]'){
-    throw new TypeError('input param must be an object');
+    throw new TypeError('input must be an object');
   }
 
   function createNode(value){

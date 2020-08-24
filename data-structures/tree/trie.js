@@ -24,17 +24,35 @@ function trie(list){
     var strArray = str.split('');
     var currentNode = root;
     for(var i = 0; i < length; i++){
-      var currentChar = strArray[i];
-      if(currentNode.next[currentChar]){
+      var char = strArray[i];
+      if(currentNode.next[char]){
         currentNode =  currentNode.next;
       } else {
-        currentNode.next[currentChar] = createNode();
+        currentNode.next[char] = createNode();
       }
     }
   }
 
   function check(str){
-    
+    var hasString = true;
+    var strArray = str.split('');
+    var currentNode = root;
+    for(var i = 0; i < strArray.length && currentNode !== undefined; i++){
+      var char = strArray[i];
+      if(!currentNode.next[char]){
+        break
+      }
+    }
+    if(i < strArray.length){
+      hasString = false;
+    }
+    return hasString;
+  }
+
+  if(list && list.length > 0){
+    for(var i = 0; i < list.length; i++){
+      insert(list[i]);
+    }
   }
 
   return {

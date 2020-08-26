@@ -7,7 +7,7 @@ function trie(list){
     return {
       value : value,
       next : {},
-      subtreeCount : 0
+      subTreeCount : 0
     }
   }
 
@@ -16,11 +16,10 @@ function trie(list){
     var currentNode = root;
     for(var i = 0; i < strArray.length; i++){
       var char = strArray[i];
-      if(currentNode.next[char]){
-        currentNode.subtreeCount = currentNode.subtreeCount + 1;
-      } else {
+      if(!currentNode.next[char]){
         currentNode.next[char] = createNode();
       }
+      currentNode.subTreeCount = currentNode.subTreeCount + 1;
       currentNode =  currentNode.next[char];
     }
     currentNode.value = value;
@@ -55,9 +54,10 @@ function trie(list){
         return null;
       }
     }
+    return { next : getNextNode}
   }
 
-  var root = { next : {}, subtreeCount: 0 };
+  var root = { next : {}, subTreeCount: 0 };
 
   var strings = Object.keys(list);
 

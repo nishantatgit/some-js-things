@@ -43,6 +43,20 @@ function trie(list){
     return hasString;
   }
 
+  function getTraversalIterator(){
+    var currentNode = root;
+    function getNextNode(char){
+      if(currentNode.next[char]){
+        currentNode = currentNode.next[char];
+        var returnNode = {};
+        return Object.assign({},currentNode);
+      }
+      else {
+        return null;
+      }
+    }
+  }
+
   var root = { next : {}, subtreeCount: 0 };
 
   var strings = Object.keys(list);
@@ -57,6 +71,7 @@ function trie(list){
   return {
     insert: insert,
     check: check,
+    getTraversalIterator: getTraversalIterator
   }
 }
 

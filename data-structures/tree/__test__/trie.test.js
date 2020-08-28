@@ -3,7 +3,7 @@ import { trie } from '../trie';
 describe('trie', function(){
   it('should test successful retrieval of information from trie' , function(){
     var prefixTree = trie(
-      {'preload' : 43, 'prefetch' :  1, 'preface': 8}
+      [{string : 'preload', value : 43}, { string : 'prefetch' }, { string : 'preface'}]
     );
     expect(prefixTree.check('pre')).toEqual(true);
     expect(prefixTree.check('prefetch')).toEqual(true);
@@ -12,7 +12,13 @@ describe('trie', function(){
   });
   it('should test getTraversalIterator function ' , function(){
     var prefixTree = trie(
-      {'preload' : 43, 'prefetch' :  1, 'preface': 8, 'paramount': 0, 'popular' : 32}
+      [
+        {string : 'preload', value : 43}, 
+        { string : 'prefetch' }, 
+        { string : 'preface'}, 
+        {string : 'paramount'}, 
+        { string : 'popular'}
+      ]
     );
     var itr = prefixTree.getTraversalIterator();
     var node = itr.next('p');

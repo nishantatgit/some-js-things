@@ -1,13 +1,14 @@
 function trie(list){
-  if(list && Object.prototype.toString.call(list) !== '[object Object]'){
-    throw new TypeError('input must be an object');
+  if(list && Object.prototype.toString.call(list) !== '[object Array]'){
+    throw new TypeError('input must be an Array');
   }
 
   function createNode(value){
     return {
       value : value,
       next : {},
-      subTreeCount : 0
+      subTreeCount : 0,
+      completeWordCount: 0,
     }
   }
 
@@ -23,6 +24,7 @@ function trie(list){
       currentNode =  currentNode.next[char];
     }
     currentNode.value = value;
+    currentNode.completeWordCount = currentNode.completeWordCount + 1;
   }
 
   function check(str){
@@ -59,12 +61,9 @@ function trie(list){
 
   var root = { next : {}, subTreeCount: 0 };
 
-  var strings = Object.keys(list);
-
-  if(strings && strings.length > 0){
-    for(var i = 0; i < strings.length; i++){
-      var currentString = strings[i];
-      insert(currentString,list[currentString]);
+  if(list && list.length > 0){
+    for(var i = 0; i < list.length; i++){
+      insert(list[i].string,list[i].value);
     }
   }
 

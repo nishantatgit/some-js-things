@@ -31,13 +31,13 @@ function linkedList(){
   function deleteFromRoot(node){
     if(!root) return;
     var deletedNode = root.next;
+    root.next = deletedNode.next;
     deletedNode.next = null;
-    root.next = root.next.next;
     _decSize();
     return deletedNode;
   }
 
-  function size(){
+  function getSizeOf(){
     return size;
   }
 
@@ -73,14 +73,14 @@ function linkedList(){
     while(currentNode.next !== null){
       if(currentNode.next.value === node.value){
         var deletedNode = currentNode.next;
+        currentNode.next = deletedNode.next;
         deletedNode.next = null;
-        currentNode.next = currentNode.next.next;
         break;
       }
+      currentNode = currentNode.next;
     }
     _decSize();
     return deletedNode;
-    
   }
 
   function insertAtEnd(node){
@@ -90,6 +90,7 @@ function linkedList(){
       currentNode = currentNode.next;
     }
     currentNode.next = node;
+    return true;
   }
 
   function deleteFromEnd(){
@@ -155,7 +156,7 @@ function linkedList(){
       node.next = tmp;
       inserted = true;
     } 
-
+    _incSize();
     return inserted;
   }
 
@@ -167,13 +168,14 @@ function linkedList(){
     var deleted;
     var currentIndex = 0;
     var currentNode = root;
-    do(
+    do {
       if(currentIndex === index){
         deleted = currentNode.next;
         currentNode.next = currentNode.next.next;
       }
       currentNode = currentNode.next;
-    ) while(currentIndex !== index && currentNode !== null);
+     } while(currentIndex !== index && currentNode !== null);
+    _decSize();
     return deleted;
   }
 
@@ -191,9 +193,7 @@ function linkedList(){
 
   function atIndex(index){
     if(index < 0){
-      if(index < 0){
-        throw new Error('Index cannot be negative ');
-      }
+      throw new Error('Index cannot be negative ');
     }
     var currentNode = root.next;
     var currentIndex = 0;
@@ -201,6 +201,8 @@ function linkedList(){
       if(index === currentIndex){
         return currentNode;
       }
+      currentNode = currentNode.next;
+      currentIndex = currentIndex + 1;
     }
   }
 
@@ -212,7 +214,7 @@ function linkedList(){
     deleteNode: deleteNode,
     deleteFromEnd: deleteFromEnd,
     getIterator: getIterator,
-    size: size,
+    getSizeOf: getSizeOf,
     indexOf: indexOf,
     insertAt: insertAt,
     deleteAt: deleteAt,
@@ -220,3 +222,5 @@ function linkedList(){
     removeAll: removeAll
   }
 }
+
+export { linkedList };

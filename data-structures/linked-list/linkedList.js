@@ -133,6 +133,10 @@ function linkedList(){
   }
 
   function insertAt(index,node){
+    if(index < 0){
+      throw new Error('Index cannot be negative ');
+    }
+
     var inserted = false;
     
     if(!root) return inserted;
@@ -156,7 +160,48 @@ function linkedList(){
   }
 
   function deleteAt(index){
-    
+    if(index < 0){
+      throw new Error('Index cannot be negative ');
+    }
+
+    var deleted;
+    var currentIndex = 0;
+    var currentNode = root;
+    do(
+      if(currentIndex === index){
+        deleted = currentNode.next;
+        currentNode.next = currentNode.next.next;
+      }
+      currentNode = currentNode.next;
+    ) while(currentIndex !== index && currentNode !== null);
+    return deleted;
+  }
+
+  function reverse(){
+    var currentNode = root.next;
+    var nextNode = root.next.next;
+    while(nextNode !== null){
+      var nextToNextNode = nextNode.next;
+      nextNode.next = currentNode;
+      currentNode = nextNode;
+      nextNode = nextToNextNode;
+    }
+    root.next = nextNode;
+  }
+
+  function atIndex(index){
+    if(index < 0){
+      if(index < 0){
+        throw new Error('Index cannot be negative ');
+      }
+    }
+    var currentNode = root.next;
+    var currentIndex = 0;
+    while(currentNode !== null){
+      if(index === currentIndex){
+        return currentNode;
+      }
+    }
   }
 
   return {
@@ -170,6 +215,8 @@ function linkedList(){
     size: size,
     indexOf: indexOf,
     insertAt: insertAt,
+    deleteAt: deleteAt,
+    atIndex: atIndex,
     removeAll: removeAll
   }
 }

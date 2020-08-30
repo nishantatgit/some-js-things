@@ -1,22 +1,13 @@
 function binaryTree(){
-  function createNode(value,left,right){
-    return {
-      value: value,
-      left: left,
-      right: right
-    }
+  var root = null;
+  var size = 0;
+
+  function _decSize(){
+    size = size ? size - 1 : size;
   }
 
-  function insertAt(node){
-
-  }
-
-  function insertAtLeft(node){
-
-  }
-
-  function insertAtRight(node){
-
+  function _incSize(){
+    size = size + 1;
   }
 
   function size(){
@@ -31,35 +22,76 @@ function binaryTree(){
     // Returns a reference to the specified target, if found
   }
 
-  function inOrderTraversal(){
+  function inOrderTraversalIterator(){
 
   }
 
-  function preOrderTraversal(){
+  function preOrderTraversalIterator(){
 
   }
 
-  function postOrderTraversal(){
+  function postOrderTraversalIterator(){
 
   }
 
-  function levelOrderTraversal(){
+  function levelOrderTraversalIterator(){
 
   }
 
-  function levelOrderAlternateTraversal(){
+  function levelOrderAlternateTraversalIterator(){
 
+  }
+
+  function treeIterator(){
+    var currentNode = root;
+
+    function toRight() {
+      currentNode = currentNode.right;
+      return currentNode;
+    }
+
+    function toLeft(){
+      currentNode = currentNode.left;
+      return currentNode;
+    }
+
+    function getCurrentNode(){
+      return currentNode;
+    }
+
+    return {
+      toRight : toRight,
+      toLeft: toLeft
+      currentNode : getCurrentNode
+    }
   }
 
   function isEmpty(){
     return root === null;
   }
 
-  function removeNode(node){
-
+  function insertToLeft(targetNode,node){
+    targetNode.left = node;
+    _incSize();
   }
 
-  var root = null;
-  var size = 0;
+  function insertToRight(targetNode,node){
+    targetNode.right = node;
+    _incSize();
+  }
 
+  return {
+    isEmpty: isEmpty,
+    size: size,
+    contains: contains,
+    find: find,
+    inOrderTraversalIterator: inOrderTraversalIterator,
+    preOrderTraversalIterator: preOrderTraversalIterator,
+    postOrderTraversalIterator: postOrderTraversalIterator,
+    levelOrderTraversalIterator: levelOrderTraversalIterator,
+    levelOrderAlternateTraversalIterator: levelOrderAlternateTraversalIterator,
+    treeIterator: treeIterator
+  }
 }
+
+export { binaryTree }

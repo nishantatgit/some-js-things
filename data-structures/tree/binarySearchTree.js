@@ -18,25 +18,36 @@ function binarySearchTree(){
           inserted = true;
           break;
         }
-        currentNode =  currentNode.toLeft();
+        currentNode =  treeIterator.toLeft();
       } else {
         if(currentNode.right === null){
           bTree.insertToRight(currentNode, nodeToInsert);
           inserted = true;
           break;
         }
-        currentNode = currentNode.toRight();
+        currentNode = treeIterator.toRight();
       }
     }
     return inserted;
   }
 
-  function search(node){
-
+  function search(value){
+    var treeIterator = btree.treeIterator();
+    var currentNode = btree.currentNode;
+    while(currentNode){
+      if(comparator(currentNode.value, value) === 0){
+        return currentNode;
+        break;
+      } else if(comparator(currentNode.value,value) > 0){
+        currentNode = treeIterator.toLeft();
+      } else {
+        currentNode = treeIterator.toRight();
+      }
+    }
   }
 
-  function deleteNode(){
-
+  function deleteNode(value){
+    
   }
 
   return {
